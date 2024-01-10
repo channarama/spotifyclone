@@ -1,2 +1,2 @@
 # spotifyclone
-im channa
+This is spotify clone
