@@ -1,0 +1,40 @@
+.flex{
+    display: flex;
+}
+.jcenter{
+    justify-content: center;
+}
+.acenter{
+    align-items: center;
+}
+.border {
+    border: 2px solid blue;
+}
+.invert{
+    filter: invert();
+}
+.bold{
+    font-weight: 600;
+}
+.layout
+{
+    background-color: #121212;
+    padding: 18px;
+    margin: 8px;
+    border-radius: 15px;
+}
+.layout1
+{
+    background-color: #121212;
+    margin: 8px;
+    border-radius: 15px;
+}
+.acorner{
+    
+    justify-content: end;
+}
+.bradius{
+    border-radius: 100%;
+    background-color: rgb(226, 221, 221);
+    padding: 5px;
+}

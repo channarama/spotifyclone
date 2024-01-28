@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl,
+    CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif),
+    sans-serif;
+  color: white;
+}
+.leftcontainer {
+  width: 20vw;
+
+  background-color: black;
+}
+
+/* height and  width of svg image in home section */
+.svg {
+  height: 20px;
+  width: 20px;
+}
+li {
+  list-style: none;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.serachlogo {
+  gap: 13px;
+}
+.homelogo {
+  gap: 13px;
+}
+/* 
+library section */
+.lib {
+  min-height: 46%;
+}
+.lb1 {
+  gap: 20px;
+  background-color: rgb(27, 27, 27);
+  padding: 10px;
+}
+.footer {
+  min-height: 20%;
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.footer a {
+  text-decoration: none;
+}
+
+/* adding mediaquery for the home */
+@media only screen and (max-width: 650px) {
+  .leftcontainer {
+    position: relative;
+    left: -110px;
+    width: 0;
+    z-index: 2;
+  }
+  .rightcontainer {
+    width: 100%;
+    background-color: black;
+  }
+}
+/* right container */
+.right {
+  background-color: black;
+}
+.nav {
+  height: 70px;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 25px;
+  height: 45px;
+  font-size: 16px;
+  width: 100px;
+  border: none;
+}
+.login:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+.signup {
+  background-color: rgb(18, 17, 17);
+  color: grey;
+  outline: none;
+  border: none;
+  font-size: 14px;
+}
+.signup:hover {
+  background-color: rgb(18, 17, 17);
+  color: rgb(246, 246, 246);
+  transform: scale(1.01);
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+  gap: 30px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.arrows {
+  margin-left: 25px;
+  gap: 10px;
+}
+.rightcontainer {
+  width: 80vw;
+  height: 100vh;
+}
+.cardcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  padding: 3px;
+  border-radius: 8px;
+  background-color: rgb(27, 27, 27);
+}
+.cardcontainer img {
+  width: 85%;
+  height: 80%;
+  margin-top: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card {
+  margin-top: 10px;
+  height: 350px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.p {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 9px;
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
