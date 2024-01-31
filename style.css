@@ -124,8 +124,10 @@ library section */
   align-items: center;
   width: 180px;
   padding: 3px;
+  padding-bottom: 20px;
   border-radius: 8px;
   background-color: rgb(27, 27, 27);
+  position: relative;
 }
 .cardcontainer img {
   width: 85%;
@@ -159,10 +161,39 @@ library section */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #303030;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+/* playbuuton on card */
+.playbtn
+{
+opacity: 0;
+transition: 0.8s;
+position: absolute;
+top: 140px;
+right: 17px;
+
+}
+.cardcontainer:hover{
+  .playbtn{
+    opacity: 1;
+    top: 119px;
+  }
+}
+.playbar
+{
+  background-color: aqua;
+  height: 70px;
+}
+.songbtns{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  top: 10px;
+  
 }
