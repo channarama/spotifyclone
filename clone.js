@@ -10,7 +10,7 @@ async function getSong() {
     for (let i = 0; i < ats.length; i++) {
         song = ats[i];
         if (song.href.endsWith(".mp3")) {
-            songs.push(song);
+            songs.push(song.href.split("/songs/")[1]);
         }
     }
 
@@ -18,7 +18,6 @@ async function getSong() {
 }
 async function main() {
     songs = await getSong();
-    console.log(songs);
     let playing = false; 
     const plays = document.getElementById("play");
     plays.addEventListener("click", () => {
@@ -34,7 +33,14 @@ async function main() {
             plays.innerHTML = '<img class="invert"  src="play.svg" alt="">'
         }
     });
-    
+    let music=document.querySelector(".musiclib");
+for (const obj of songs) {
+    music.innerHTML=music.innerHTML+`<li class="musiclist">${obj.replaceAll("%20","")}</li>`
+}
+
+Array.from(document.querySelector(".musiclib").getElementsByTagName("li")).forEach(e=>{
+    console.log(e)
+})
 
 }
 main()
