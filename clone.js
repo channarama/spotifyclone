@@ -1,4 +1,17 @@
+currentsong = new Audio()
 
+
+function formatTime(seconds) {
+    // Calculate minutes and seconds
+    let minutes = Math.floor(seconds / 60);
+    let remainingSeconds = seconds % 60;
+    
+    // Pad single-digit seconds with a leading zero
+    let secondsString = remainingSeconds < 10 ? '0' +Math.floor(remainingSeconds) : Math.floor(remainingSeconds) ;
+    
+    // Return formatted time as a string
+    return minutes + ':' + secondsString;
+}
 async function getSong() {
     let songApi = await fetch('http://127.0.0.1:5500/songs/');
     let response = await songApi.text();
@@ -18,29 +31,35 @@ async function getSong() {
 }
 async function main() {
     songs = await getSong();
-    let playing = false; 
+    let playing = false;
     const plays = document.getElementById("play");
     plays.addEventListener("click", () => {
-        if (playing === false) {
-            aud = new Audio(songs[0]);
-            aud.play();
-            playing = true;
-            plays.innerHTML = '<img class="invert"  src="pause.svg" alt="">'
-
+        if (currentsong.paused) {
+            currentsong.play()
+            plays.innerHTML = '<img class="invert"  src="pause.svg" alt="">' //populating library
         } else {
-            aud.pause();
-            playing = false;
+            currentsong.pause()
             plays.innerHTML = '<img class="invert"  src="play.svg" alt="">'
         }
     });
-    let music=document.querySelector(".musiclib");
-for (const obj of songs) {
-    music.innerHTML=music.innerHTML+`<li class="musiclist">${obj.replaceAll("%20","")}</li>`
-}
+    let music = document.querySelector(".musiclib");
+    for (const obj of songs) {
+        music.innerHTML = music.innerHTML + `<li class="musiclist">${decodeURI(obj)}</li>`
+    }
 
-Array.from(document.querySelector(".musiclib").getElementsByTagName("li")).forEach(e=>{
-    console.log(e)
-})
+    Array.from(document.querySelector(".musiclib").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", () => {
+            document.querySelector(".songinfo").innerHTML = decodeURI(e.innerHTML)
+            document.querySelector(".timer").innerHTML = "00/00"
+            currentsong.src = "http://127.0.0.1:5500/songs/" + e.innerHTML
+            currentsong.play();
+        });
+    })
+    currentsong.addEventListener("timeupdate", () => {
+        console.log(currentsong.currentTime, currentsong.duration)
+        document.querySelector(".timer").innerHTML =`${formatTime(currentsong.currentTime)}/${formatTime(currentsong.duration)}`
+        document.querySelector(".circle").style.left=`${(currentsong.currentTime/currentsong.duration)*100}%`
+    })
 
 }
 main()
