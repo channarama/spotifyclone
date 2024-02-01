@@ -232,3 +232,16 @@ left: 8px;
   bottom: 9px;
   border-radius: 100%;
 }
+.allinfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.songinfo{
+  margin-left: 15px;
+  margin-top: 15px;
+}
+.timer{
+  margin-right: 50px;
+  margin-top: 15px;
+}
