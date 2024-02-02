@@ -196,7 +196,7 @@ right: 17px;
   justify-content: center;
   position: relative;
   top: 10px;
-  
+  cursor: pointer;
 }
 .musiclib{
   height: 260px;
@@ -217,20 +217,23 @@ right: 17px;
 }
 .seekbar{
   width: 95%;
-  height: 2px;
+  height: 5px;
   background-color:white;
 position: relative;
 top: 22px;
 left: 8px;
+cursor: pointer;
 
 }
 .circle{
-  width: 17px;
+  width: 19px;
   background-color:rgb(127, 122, 122);
-  height: 17px;
+  height: 19px;
   position: relative;
-  bottom: 9px;
+  bottom: 7px;
   border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 .allinfo{
   display: flex;

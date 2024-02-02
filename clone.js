@@ -2,14 +2,10 @@ currentsong = new Audio()
 
 
 function formatTime(seconds) {
-    // Calculate minutes and seconds
+  
     let minutes = Math.floor(seconds / 60);
     let remainingSeconds = seconds % 60;
-    
-    // Pad single-digit seconds with a leading zero
     let secondsString = remainingSeconds < 10 ? '0' +Math.floor(remainingSeconds) : Math.floor(remainingSeconds) ;
-    
-    // Return formatted time as a string
     return minutes + ':' + secondsString;
 }
 async function getSong() {
@@ -54,13 +50,36 @@ async function main() {
             currentsong.src = "http://127.0.0.1:5500/songs/" + e.innerHTML
             currentsong.play();
         });
-    })
+    }) 
     currentsong.addEventListener("timeupdate", () => {
-        console.log(currentsong.currentTime, currentsong.duration)
-        document.querySelector(".timer").innerHTML =`${formatTime(currentsong.currentTime)}/${formatTime(currentsong.duration)}`
+       document.querySelector(".timer").innerHTML =`${formatTime(currentsong.currentTime)}/${formatTime(currentsong.duration)}`
         document.querySelector(".circle").style.left=`${(currentsong.currentTime/currentsong.duration)*100}%`
     })
+const seekbar=document.querySelector(".seekbar");
+seekbar.addEventListener("click",(e)=>{
+document.querySelector(".circle").style.left=`${(e.offsetX/e.target.getBoundingClientRect().width)*100}%`
+currentsong.currentTime=(currentsong.duration*((e.offsetX/e.target.getBoundingClientRect().width)*100))/100
+})
+const prev = document.querySelector("#prev");
 
+prev.addEventListener("click", (e) => {
+    console.log("Current song:", currentsong.src);
+     const currentSongFilename = currentsong.src.split("/").slice(-1)[0];
+const index = songs.indexOf(currentSongFilename)-1;
+console.log(index)
+currentsong.src=(`http://127.0.0.1:5500/songs/`+songs[index])
+currentsong.play()
+});
+
+const next=document.querySelector("#next");
+next.addEventListener("click",(e)=>{
+    console.log("Current song:", currentsong.src);
+    const currentSongFilename = currentsong.src.split("/").slice(-1)[0];
+const index = songs.indexOf(currentSongFilename)+1;
+console.log(index)
+currentsong.src=(`http://127.0.0.1:5500/songs/`+songs[index])
+currentsong.play()
+})
 }
 main()
 
