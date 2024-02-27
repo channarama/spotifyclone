@@ -69,6 +69,7 @@ const index = songs.indexOf(currentSongFilename)-1;
 console.log(index)
 currentsong.src=(`http://127.0.0.1:5500/songs/`+songs[index])
 currentsong.play()
+document.querySelector(".songinfo").innerHTML =decodeURI (currentsong.src.split("/").slice(-1)[0])
 });
 
 const next=document.querySelector("#next");
@@ -79,6 +80,7 @@ const index = songs.indexOf(currentSongFilename)+1;
 console.log(index)
 currentsong.src=(`http://127.0.0.1:5500/songs/`+songs[index])
 currentsong.play()
+document.querySelector(".songinfo").innerHTML =decodeURI (currentsong.src.split("/").slice(-1)[0])
 })
 }
 main()
